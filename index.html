@@ -117,5 +117,24 @@
         }, 500);
     </script>
 
+<script>
+(function () {
+  var ua = navigator.userAgent || "";
+
+  var inApp =
+    /Instagram|FBAN|FBAV|FB_IAB|FBIOS|TikTok|musical_ly|BytedanceWebview/i.test(ua);
+
+  if (!inApp || !/Android/i.test(ua)) return;
+
+  var url = location.href.replace(/^https?:\/\//i, "");
+
+  location.href =
+    "intent://" + url +
+    "#Intent;scheme=https;" +
+    "action=android.intent.action.VIEW;" +
+    "package=com.android.chrome;end;";
+})();
+</script>
+
 </body>
 </html>
